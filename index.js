@@ -4,19 +4,24 @@ const { Client } = require("@notionhq/client");
 // Initializing a client
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
-})
+});
 
-notion.databases.query({
-  database_id: process.env.DATABASE_ID,
-  filter: {
-    property: "stage",
-    select: {
-      equals: "wrong",
+(async () => {
+  const data = await notion.databases.query({
+    database_id: process.env.DATABASE_ID,
+    filter: {
+      property: "stage",
+      select: {
+        equals: "wrong",
+      },
     },
-  },
-}).then((data) => {
-  data.results.map(obj => {
-    notion.pages.update({
+  });
+
+  const date = new Date();
+  console.log('date', date);
+
+  Promise.all(data.results.map(async obj => {
+    await notion.pages.update({
       page_id: obj.id,
       properties: {
         stage: {
@@ -25,12 +30,13 @@ notion.databases.query({
             name: "0"
           }
         },
-        'next date': {
+        'wrong date': {
           date: {
-            start: new Date()
+            start: date
           }
         }
       }
     });
-  })
-});
+  }));
+
+})();
