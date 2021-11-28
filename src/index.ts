@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Client } = require("@notionhq/client");
 
+
 // Initializing a client
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -20,7 +21,7 @@ const notion = new Client({
   const date = new Date();
   console.log('date', date);
 
-  Promise.all(data.results.map(async obj => {
+  Promise.all(data.results.map(async (obj: any) => {
     await notion.pages.update({
       page_id: obj.id,
       properties: {

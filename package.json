@@ -5,9 +5,14 @@
   "license": "MIT",
   "dependencies": {
     "@notionhq/client": "^0.4.9",
+    "dayjs": "^1.10.7",
     "dotenv": "^10.0.0"
   },
   "scripts": {
     "start": "node index"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "typescript": "^4.5.2"
   }
 }
