@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Client } = require("@notionhq/client");
-
+const dayjs = require('dayjs');
 
 // Initializing a client
 const notion = new Client({
@@ -18,9 +18,6 @@ const notion = new Client({
     },
   });
 
-  const date = new Date();
-  console.log('date', date);
-
   Promise.all(data.results.map(async (obj: any) => {
     await notion.pages.update({
       page_id: obj.id,
@@ -33,7 +30,7 @@ const notion = new Client({
         },
         'wrong date': {
           date: {
-            start: date
+            start: dayjs().format('YYYY-MM-DD')
           }
         }
       }
