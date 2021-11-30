@@ -16,7 +16,8 @@
     "bash-deploy": "npx tsc && heroku container:push web -a notionapi-maxime && heroku container:release web -a notionapi-maxime",
     "docker-start": "sudo service docker start",
     "logs": "heroku logs -n 50 -a notionapi-maxime",
-    "start": "node build/index"
+    "start": "node build/index",
+    "build": "yarn tsc"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
