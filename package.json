@@ -11,7 +11,11 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "bash-deploy:dev": "npx tsc && docker build . -t maxime/notion && docker run maxime/notion",
+    "bash-deploy": "npx tsc && heroku container:push web -a notionapi-maxime && heroku container:release web -a notionapi-maxime",
+    "docker-start": "sudo service docker start",
+    "logs": "heroku logs -n 50 -a notionapi-maxime"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
