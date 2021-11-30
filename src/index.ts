@@ -5,5 +5,7 @@ import { jobs } from "./programmed_jobs";
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
-console.log(new Date());
+
+console.log('Starting app', new Date());
+
 jobs(notion);
