@@ -1,11 +1,11 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es2016",
     "lib": [
       "es6"
     ],
     "module": "commonjs",
-    "rootDir": "src",
     "resolveJsonModule": true,
     "allowJs": true,
     "outDir": "build",
@@ -14,10 +14,10 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "paths": {
-      "@types": [
-        "./src/types/*"
-      ]
-    }
+  },
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
   }
 }
