@@ -7,7 +7,7 @@ export const main = async () => {
     auth: process.env.NOTION_TOKEN,
   });
 
-  const data = await notion.databases.query({
+  const items_guessed_wrong = await notion.databases.query({
     database_id: process.env.DATABASE_ID!,
     filter: {
       property: "stage",
@@ -17,7 +17,7 @@ export const main = async () => {
     },
   });
 
-  Promise.all(data.results.map(async (obj: any) => {
+  await Promise.all(items_guessed_wrong.results.map(async (obj: any) => {
     await notion.pages.update({
       page_id: obj.id,
       properties: {
