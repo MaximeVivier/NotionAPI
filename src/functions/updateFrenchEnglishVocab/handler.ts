@@ -2,7 +2,6 @@ import { Client } from "@notionhq/client";
 import dayjs from 'dayjs';
 
 export const main = async () => {
-  console.log('Job will execute', new Date());
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
   });
