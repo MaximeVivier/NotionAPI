@@ -7,7 +7,7 @@ export const main = async () => {
   });
 
   const items_guessed_wrong = await notion.databases.query({
-    database_id: process.env.DATABASE_ID!,
+    database_id: process.env.FLASHCARD_TABLE_ID!,
     filter: {
       property: "stage",
       select: {
