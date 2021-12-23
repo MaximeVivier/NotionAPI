@@ -1,5 +1,3 @@
-import { vocabFrenchEnglish } from './flashcard/vocab';
+import { vocabFrenchEnglish } from "./flashcard/vocab";
 
-export {
-  vocabFrenchEnglish
-};
+export { vocabFrenchEnglish };

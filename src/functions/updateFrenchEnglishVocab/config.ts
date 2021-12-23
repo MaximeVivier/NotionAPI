@@ -1,12 +1,12 @@
-import { handlerPath } from '@libs/handlerResolver';
+import { handlerPath } from "@libs/handlerResolver";
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
   events: [
     {
       schedule: {
-        rate: ['cron(0 3 * * ? *)']
-      }
-    }
-  ]
-}
+        rate: ["cron(0 3 * * ? *)"],
+      },
+    },
+  ],
+};

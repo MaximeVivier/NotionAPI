@@ -1,5 +1,5 @@
 import { Client } from "@notionhq/client";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export const main = async () => {
   const notion = new Client({
@@ -16,24 +16,27 @@ export const main = async () => {
     },
   });
 
-  await Promise.all(items_guessed_wrong.results.map(async (obj: any) => {
-    await notion.pages.update({
-      page_id: obj.id,
-      properties: {
-        stage: {
-          type: "select",
-          select: {
-            name: "0"
-          }
+  await Promise.all(
+    items_guessed_wrong.results.map(async (obj: any) => {
+      await notion.pages.update({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        page_id: obj.id,
+        properties: {
+          stage: {
+            type: "select",
+            select: {
+              name: "0",
+            },
+          },
+          "wrong date": {
+            date: {
+              start: dayjs().format("YYYY-MM-DD"),
+            },
+          },
         },
-        'wrong date': {
-          date: {
-            start: dayjs().format('YYYY-MM-DD')
-          }
-        }
-      }
-    });
-  }));
+      });
+    })
+  );
 
-  return 'Job succeded';
-}
+  return "Job succeded";
+};

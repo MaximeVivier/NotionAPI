@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
-import { postNotifToMyReminders } from '@libs/slack-toolbox';
-import { formatTodosMessage } from '@libs/formatMessage';
+import { postNotifToMyReminders } from "@libs/slack-toolbox";
+import { formatTodosMessage } from "@libs/formatMessage";
 
 export const main = async () => {
   const notion = new Client({
@@ -15,18 +15,23 @@ export const main = async () => {
         equals: "Urgent ToDo",
       },
     },
-    sorts: [{
-      property: "Urgency",
-      direction: "descending",
-    }],
+    sorts: [
+      {
+        property: "Urgency",
+        direction: "descending",
+      },
+    ],
     page_size: 3,
   });
 
-  const important_todos_messages = important_todos_object.results.map(obj => obj.properties.Name.title[0].text.content)
+  const important_todos_messages = important_todos_object.results.map(
+    (obj) => obj.properties.Name.title[0].text.content
+  );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const listMessages = formatTodosMessage(important_todos_messages);
 
-  console.log('postNotif', (await postNotifToMyReminders(listMessages)).data);
+  console.log("postNotif", (await postNotifToMyReminders(listMessages)).data);
 
-  return 'Job succeded';
-}
+  return "Job succeded";
+};

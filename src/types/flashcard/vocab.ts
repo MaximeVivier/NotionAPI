@@ -1,12 +1,12 @@
 export interface vocabFrenchEnglish {
-  french: String,
-  english: String,
-  stage: String,
-  "wrong date": Date,
-  "next date": Date,
-  status: cardStatus,
-  display: String,
-  answer: String
+  french: string;
+  english: string;
+  stage: string;
+  "wrong date": Date;
+  "next date": Date;
+  status: cardStatus;
+  display: string;
+  answer: string;
 }
 
 enum cardStatus {
